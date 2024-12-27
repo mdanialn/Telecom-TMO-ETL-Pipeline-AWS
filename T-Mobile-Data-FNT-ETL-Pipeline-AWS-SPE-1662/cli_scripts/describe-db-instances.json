@@ -1,0 +1,258 @@
+{
+    "DBInstances": [
+        {
+            "DBInstanceIdentifier": "dev-fnt-rds-operational-db-reader",
+            "DBInstanceClass": "db.serverless",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "dev_fnt_aurora_postgres_1",
+            "Endpoint": {
+                "Address": "dev-fnt-rds-operational-db-reader.ctog8aqa8acn.us-west-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z1PVIF0B656C1W"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2024-07-25T18:57:37.392000+00:00",
+            "PreferredBackupWindow": "08:26-08:56",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-0201c4abf6561a546",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "fnt-tmo-aurora-postgresql14-parameter-group",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-west-2b",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "dev-fnt-rds-subnet-group",
+                "DBSubnetGroupDescription": "RDS subnet group for Fintech operational DB",
+                "VpcId": "vpc-0d7538012f6dd12e3",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-000c85bf4a0abaf24",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-west-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-0b3f74c7ed3b2a206",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-west-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "sun:12:52-sun:13:22",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "14.9",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-14",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "dev-fnt-rds-operational-db-cluster",
+            "StorageEncrypted": false,
+            "DbiResourceId": "db-2IXGJQNISI2O2AQ2MGMWSHYC64",
+            "CACertificateIdentifier": "rds-ca-rsa2048-g1",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 0,
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-west-2:905418049473:db:dev-fnt-rds-operational-db-reader",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": [
+                {
+                    "Key": "Role",
+                    "Value": "Fintech Operational Database"
+                },
+                {
+                    "Key": "Owner",
+                    "Value": "scott.cable@t-mobile.com"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Non-Production::Dev"
+                },
+                {
+                    "Key": "App OU",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Application",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Stack",
+                    "Value": "Fintech Backend"
+                },
+                {
+                    "Key": "Workload",
+                    "Value": "Fintech Card"
+                }
+            ],
+            "CustomerOwnedIpEnabled": false,
+            "BackupTarget": "region",
+            "NetworkType": "IPV4",
+            "StorageThroughput": 0,
+            "CertificateDetails": {
+                "CAIdentifier": "rds-ca-rsa2048-g1",
+                "ValidTill": "2025-08-14T18:41:47+00:00"
+            },
+            "DedicatedLogVolume": false,
+            "EngineLifecycleSupport": "open-source-rds-extended-support-disabled"
+        },
+        {
+            "DBInstanceIdentifier": "dev-fnt-rds-operational-db-writer",
+            "DBInstanceClass": "db.serverless",
+            "Engine": "aurora-postgresql",
+            "DBInstanceStatus": "available",
+            "MasterUsername": "postgres",
+            "DBName": "dev_fnt_aurora_postgres_1",
+            "Endpoint": {
+                "Address": "dev-fnt-rds-operational-db-writer.ctog8aqa8acn.us-west-2.rds.amazonaws.com",
+                "Port": 5432,
+                "HostedZoneId": "Z1PVIF0B656C1W"
+            },
+            "AllocatedStorage": 1,
+            "InstanceCreateTime": "2024-07-25T18:48:05.780000+00:00",
+            "PreferredBackupWindow": "08:26-08:56",
+            "BackupRetentionPeriod": 7,
+            "DBSecurityGroups": [],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-0201c4abf6561a546",
+                    "Status": "active"
+                }
+            ],
+            "DBParameterGroups": [
+                {
+                    "DBParameterGroupName": "fnt-tmo-aurora-postgresql14-parameter-group",
+                    "ParameterApplyStatus": "in-sync"
+                }
+            ],
+            "AvailabilityZone": "us-west-2a",
+            "DBSubnetGroup": {
+                "DBSubnetGroupName": "dev-fnt-rds-subnet-group",
+                "DBSubnetGroupDescription": "RDS subnet group for Fintech operational DB",
+                "VpcId": "vpc-0d7538012f6dd12e3",
+                "SubnetGroupStatus": "Complete",
+                "Subnets": [
+                    {
+                        "SubnetIdentifier": "subnet-000c85bf4a0abaf24",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-west-2b"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    },
+                    {
+                        "SubnetIdentifier": "subnet-0b3f74c7ed3b2a206",
+                        "SubnetAvailabilityZone": {
+                            "Name": "us-west-2a"
+                        },
+                        "SubnetOutpost": {},
+                        "SubnetStatus": "Active"
+                    }
+                ]
+            },
+            "PreferredMaintenanceWindow": "mon:11:16-mon:11:46",
+            "PendingModifiedValues": {},
+            "MultiAZ": false,
+            "EngineVersion": "14.9",
+            "AutoMinorVersionUpgrade": true,
+            "ReadReplicaDBInstanceIdentifiers": [],
+            "LicenseModel": "postgresql-license",
+            "OptionGroupMemberships": [
+                {
+                    "OptionGroupName": "default:aurora-postgresql-14",
+                    "Status": "in-sync"
+                }
+            ],
+            "PubliclyAccessible": false,
+            "StorageType": "aurora",
+            "DbInstancePort": 0,
+            "DBClusterIdentifier": "dev-fnt-rds-operational-db-cluster",
+            "StorageEncrypted": false,
+            "DbiResourceId": "db-2LSO47MN7FYZDVBKO5H5W4D3OA",
+            "CACertificateIdentifier": "rds-ca-rsa2048-g1",
+            "DomainMemberships": [],
+            "CopyTagsToSnapshot": false,
+            "MonitoringInterval": 0,
+            "PromotionTier": 1,
+            "DBInstanceArn": "arn:aws:rds:us-west-2:905418049473:db:dev-fnt-rds-operational-db-writer",
+            "IAMDatabaseAuthenticationEnabled": false,
+            "PerformanceInsightsEnabled": false,
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "DeletionProtection": false,
+            "AssociatedRoles": [],
+            "TagList": [
+                {
+                    "Key": "Role",
+                    "Value": "Fintech Operational Database"
+                },
+                {
+                    "Key": "Owner",
+                    "Value": "scott.cable@t-mobile.com"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Non-Production::Dev"
+                },
+                {
+                    "Key": "App OU",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Application",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Stack",
+                    "Value": "Fintech Backend"
+                },
+                {
+                    "Key": "Workload",
+                    "Value": "Fintech Card"
+                }
+            ],
+            "CustomerOwnedIpEnabled": false,
+            "BackupTarget": "region",
+            "NetworkType": "IPV4",
+            "StorageThroughput": 0,
+            "CertificateDetails": {
+                "CAIdentifier": "rds-ca-rsa2048-g1",
+                "ValidTill": "2025-08-14T18:55:23+00:00"
+            },
+            "DedicatedLogVolume": false,
+            "EngineLifecycleSupport": "open-source-rds-extended-support-disabled"
+        }
+    ]
+}

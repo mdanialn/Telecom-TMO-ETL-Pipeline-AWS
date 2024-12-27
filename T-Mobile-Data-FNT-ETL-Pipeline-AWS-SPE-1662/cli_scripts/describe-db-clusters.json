@@ -1,0 +1,108 @@
+{
+    "DBClusters": [
+        {
+            "AllocatedStorage": 1,
+            "AvailabilityZones": [
+                "us-west-2c",
+                "us-west-2a",
+                "us-west-2b"
+            ],
+            "BackupRetentionPeriod": 7,
+            "DatabaseName": "dev_fnt_aurora_postgres_1",
+            "DBClusterIdentifier": "dev-fnt-rds-operational-db-cluster",
+            "DBClusterParameterGroup": "fnt-tmo-aurora-postgresql14",
+            "DBSubnetGroup": "dev-fnt-rds-subnet-group",
+            "Status": "available",
+            "EarliestRestorableTime": "2024-09-05T08:34:54.628000+00:00",
+            "Endpoint": "dev-fnt-rds-operational-db-cluster.cluster-ctog8aqa8acn.us-west-2.rds.amazonaws.com",
+            "ReaderEndpoint": "dev-fnt-rds-operational-db-cluster.cluster-ro-ctog8aqa8acn.us-west-2.rds.amazonaws.com",
+            "MultiAZ": true,
+            "Engine": "aurora-postgresql",
+            "EngineVersion": "14.9",
+            "LatestRestorableTime": "2024-09-12T14:58:36.380000+00:00",
+            "Port": 5432,
+            "MasterUsername": "postgres",
+            "PreferredBackupWindow": "08:26-08:56",
+            "PreferredMaintenanceWindow": "tue:10:11-tue:10:41",
+            "ReadReplicaIdentifiers": [],
+            "DBClusterMembers": [
+                {
+                    "DBInstanceIdentifier": "dev-fnt-rds-operational-db-reader",
+                    "IsClusterWriter": false,
+                    "DBClusterParameterGroupStatus": "in-sync",
+                    "PromotionTier": 1
+                },
+                {
+                    "DBInstanceIdentifier": "dev-fnt-rds-operational-db-writer",
+                    "IsClusterWriter": true,
+                    "DBClusterParameterGroupStatus": "in-sync",
+                    "PromotionTier": 1
+                }
+            ],
+            "VpcSecurityGroups": [
+                {
+                    "VpcSecurityGroupId": "sg-0201c4abf6561a546",
+                    "Status": "active"
+                }
+            ],
+            "HostedZoneId": "Z1PVIF0B656C1W",
+            "StorageEncrypted": false,
+            "DbClusterResourceId": "cluster-VP4KWF4ZXWV2GPQORUJY3D66JM",
+            "DBClusterArn": "arn:aws:rds:us-west-2:905418049473:cluster:dev-fnt-rds-operational-db-cluster",
+            "AssociatedRoles": [],
+            "IAMDatabaseAuthenticationEnabled": false,
+            "ClusterCreateTime": "2024-07-25T18:40:21.978000+00:00",
+            "EnabledCloudwatchLogsExports": [
+                "postgresql"
+            ],
+            "EngineMode": "provisioned",
+            "DeletionProtection": false,
+            "HttpEndpointEnabled": false,
+            "ActivityStreamStatus": "stopped",
+            "CopyTagsToSnapshot": true,
+            "CrossAccountClone": false,
+            "DomainMemberships": [],
+            "TagList": [
+                {
+                    "Key": "Role",
+                    "Value": "Fintech Operational Database"
+                },
+                {
+                    "Key": "Owner",
+                    "Value": "scott.cable@t-mobile.com"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Non-production::Dev"
+                },
+                {
+                    "Key": "App OU",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Application",
+                    "Value": "fnt"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "dev-fnt-aurora-postgres-1"
+                },
+                {
+                    "Key": "Stack",
+                    "Value": "Fintech Backend"
+                },
+                {
+                    "Key": "Workload",
+                    "Value": "Fintech Card"
+                }
+            ],
+            "AutoMinorVersionUpgrade": true,
+            "ServerlessV2ScalingConfiguration": {
+                "MinCapacity": 0.5,
+                "MaxCapacity": 16.0
+            },
+            "NetworkType": "IPV4",
+            "EngineLifecycleSupport": "open-source-rds-extended-support-disabled"
+        }
+    ]
+}

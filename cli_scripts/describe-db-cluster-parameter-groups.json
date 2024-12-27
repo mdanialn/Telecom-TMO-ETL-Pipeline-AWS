@@ -1,0 +1,10 @@
+{
+    "DBClusterParameterGroups": [
+        {
+            "DBClusterParameterGroupName": "fnt-tmo-aurora-postgresql14",
+            "DBParameterGroupFamily": "aurora-postgresql14",
+            "Description": "DB audit logging enabled (Aurora PostgreSQL, Fintech)",
+            "DBClusterParameterGroupArn": "arn:aws:rds:us-west-2:905418049473:cluster-pg:fnt-tmo-aurora-postgresql14"
+        }
+    ]
+}

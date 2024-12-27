@@ -1,0 +1,104 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "cloudwatch:DescribeInsightRules",
+          "cloudwatch:GetDashboard",
+          "cloudwatch:PutMetricData",
+          "cloudwatch:GetInsightRuleReport",
+          "cloudwatch:GetMetricData",
+          "cloudwatch:GetMetricStatistics",
+          "cloudwatch:ListMetrics",
+          "cloudwatch:DescribeAnomalyDetectors",
+          "cloudwatch:DescribeAlarmHistory",
+          "cloudwatch:DescribeAlarmsForMetric",
+          "cloudwatch:ListDashboards",
+          "cloudwatch:ListTagsForResource",
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:GetMetricWidgetImage"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "cloudwatch:PutMetricAlarm",
+          "cloudwatch:DeleteAlarms"
+        ],
+        "Resource": [
+          "arn:aws:cloudwatch:*:*:alarm:${aws:PrincipalTag/Ou}*",
+          "arn:aws:cloudwatch:*:*:alarm:*-${aws:PrincipalTag/Ou}-*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetRandomPassword",
+          "secretsmanager:ListSecrets"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:CreateSecret",
+          "secretsmanager:TagResource"
+        ],
+        "Resource": [
+          "*"
+        ],
+        "Condition": {
+          "StringEqualsIfExists": {
+            "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+          }
+        }
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:UntagResource",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:DeleteResourcePolicy",
+          "secretsmanager:PutSecretValue",
+          "secretsmanager:DeleteSecret",
+          "secretsmanager:CancelRotateSecret",
+          "secretsmanager:ListSecretVersionIds",
+          "secretsmanager:UpdateSecret",
+          "secretsmanager:GetResourcePolicy",
+          "secretsmanager:StopReplicationToReplica",
+          "secretsmanager:PutResourcePolicy",
+          "secretsmanager:ReplicateSecretToRegions",
+          "secretsmanager:RestoreSecret",
+          "secretsmanager:RotateSecret",
+          "secretsmanager:UpdateSecretVersionStage",
+          "secretsmanager:ValidateResourcePolicy",
+          "secretsmanager:RemoveRegionsFromReplication"
+        ],
+        "Resource": [
+          "*"
+        ],
+        "Condition": {
+          "StringEqualsIfExists": {
+            "secretsmanager:ResourceTag/Application": "${aws:PrincipalTag/Application}"
+          }
+        }
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetSecretValue"
+        ],
+        "Resource": [
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/batch_user1-DGfgUh",
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/admin-KIeJiN",
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/card/account/svc-tmwfLk"
+        ]
+      }
+    ]
+  }

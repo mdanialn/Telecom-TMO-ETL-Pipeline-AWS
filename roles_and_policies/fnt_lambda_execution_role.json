@@ -1,0 +1,470 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/batch_user1-DGfgUh",
+        "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/admin-KIeJiN"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetRandomPassword",
+        "secretsmanager:ListSecrets"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:CreateSecret",
+        "secretsmanager:TagResource"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Condition": {
+        "StringEqualsIfExists": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:UntagResource",
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:DeleteResourcePolicy",
+        "secretsmanager:PutSecretValue",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:CancelRotateSecret",
+        "secretsmanager:ListSecretVersionIds",
+        "secretsmanager:UpdateSecret",
+        "secretsmanager:GetResourcePolicy",
+        "secretsmanager:StopReplicationToReplica",
+        "secretsmanager:PutResourcePolicy",
+        "secretsmanager:ReplicateSecretToRegions",
+        "secretsmanager:RestoreSecret",
+        "secretsmanager:RotateSecret",
+        "secretsmanager:UpdateSecretVersionStage",
+        "secretsmanager:ValidateResourcePolicy",
+        "secretsmanager:RemoveRegionsFromReplication"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Condition": {
+        "StringEqualsIfExists": {
+          "secretsmanager:ResourceTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:Describe*",
+        "ec2:DetachNetworkInterface",
+        "ec2:DeleteNetworkInterfacePermission",
+        "ec2:CreateNetworkInterfacePermission",
+        "ec2:CreateSecurityGroup",
+        "ec2:DeleteNetworkInterface"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateDhcpOptions",
+        "ec2:ReplaceRouteTableAssociation",
+        "ec2:GetEbsEncryptionByDefault",
+        "ec2:DeleteVpcEndpoints",
+        "ec2:AttachInternetGateway",
+        "ec2:DeleteLocalGatewayRouteTableVpcAssociation",
+        "ec2:DeleteRouteTable",
+        "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
+        "ec2:DeleteVpnGateway",
+        "ec2:CreateRoute",
+        "ec2:RevokeSecurityGroupEgress",
+        "ec2:GetEbsDefaultKmsKeyId",
+        "ec2:DeleteInternetGateway",
+        "ec2:UnassignPrivateIpAddresses",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:CreateLocalGatewayRouteTableVpcAssociation",
+        "ec2:ModifySecurityGroupRules",
+        "ec2:AssignPrivateIpAddresses",
+        "ec2:DisassociateRouteTable",
+        "ec2:ReplaceNetworkAclAssociation",
+        "ec2:CreateVpcEndpointServiceConfiguration",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:DetachVpnGateway",
+        "ec2:GetPasswordData",
+        "ec2:CreateDefaultVpc",
+        "ec2:DeleteDhcpOptions",
+        "ec2:DeleteNatGateway",
+        "ec2:CreateSubnet",
+        "ec2:DeleteNetworkAclEntry",
+        "ec2:ModifyVpcEndpoint",
+        "ec2:CreateVpnConnection",
+        "ec2:DisassociateAddress",
+        "ec2:ModifyVpcEndpointServicePermissions",
+        "ec2:MoveAddressToVpc",
+        "ec2:CreateNatGateway",
+        "ec2:CreateVpc",
+        "ec2:ModifySubnetAttribute",
+        "ec2:CreateDefaultSubnet",
+        "ec2:GetSecurityGroupsForVpc",
+        "ec2:DeleteNetworkAcl",
+        "ec2:ReleaseAddress",
+        "ec2:AssociateDhcpOptions",
+        "ec2:AssignIpv6Addresses",
+        "ec2:AcceptVpcEndpointConnections",
+        "ec2:AttachVpnGateway",
+        "ec2:CreateVpnConnectionRoute",
+        "ec2:DisassociateSubnetCidrBlock",
+        "ec2:RestoreAddressToClassic",
+        "ec2:DeleteCustomerGateway",
+        "ec2:EnableVgwRoutePropagation",
+        "ec2:DisableVpcClassicLink",
+        "ec2:DisableVpcClassicLinkDnsSupport",
+        "ec2:AllocateHosts",
+        "ec2:ModifyVpcTenancy",
+        "ec2:DeleteFlowLogs",
+        "ec2:DeleteSubnet",
+        "ec2:ModifyVpcEndpointServiceConfiguration",
+        "ec2:DetachClassicLinkVpc",
+        "ec2:AcceptVpcPeeringConnection",
+        "ec2:DeleteVpcPeeringConnection",
+        "ec2:DisableVgwRoutePropagation",
+        "ec2:ReplaceRoute",
+        "ec2:AssociateRouteTable",
+        "ec2:RejectVpcPeeringConnection",
+        "ec2:CreateCarrierGateway",
+        "ec2:ReplaceNetworkAclEntry",
+        "ec2:CreateVpnGateway",
+        "ec2:ModifyVpcPeeringConnectionOptions",
+        "ec2:UnassignIpv6Addresses",
+        "ec2:DeleteVpnConnection",
+        "ec2:CreateVpcPeeringConnection",
+        "ec2:RejectVpcEndpointConnections",
+        "ec2:EnableVpcClassicLink",
+        "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+        "ec2:CreateVpcEndpointConnectionNotification",
+        "ec2:ResetNetworkInterfaceAttribute",
+        "ec2:CreateRouteTable",
+        "ec2:CreateCustomerGateway",
+        "ec2:DetachInternetGateway",
+        "ec2:ModifyVpcEndpointConnectionNotification",
+        "ec2:AssociateSubnetCidrBlock",
+        "ec2:CreateEgressOnlyInternetGateway",
+        "ec2:DeleteVpc",
+        "ec2:AssociateAddress",
+        "ec2:DeleteCarrierGateway",
+        "ec2:GetResourcePolicy",
+        "ec2:DeleteVpcEndpointServiceConfigurations",
+        "ec2:CreateNetworkAcl",
+        "ec2:ModifyVpcAttribute",
+        "ec2:AttachClassicLinkVpc",
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:DeleteEgressOnlyInternetGateway",
+        "ec2:DeleteRoute",
+        "ec2:AllocateAddress",
+        "ec2:DeleteVpnConnectionRoute",
+        "ec2:CreateVpcEndpoint",
+        "ec2:DeleteSecurityGroup",
+        "ec2:AttachNetworkInterface",
+        "ec2:EnableVpcClassicLinkDnsSupport",
+        "ec2:CreateNetworkAclEntry"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:subnet/*",
+        "arn:aws:ec2:*:*:key-pair/*",
+        "arn:aws:ec2:*::snapshot/*",
+        "arn:aws:ec2:*:*:security-group/*",
+        "arn:aws:ec2:*:*:network-interface/*",
+        "arn:aws:ec2:*::image/*",
+        "arn:aws:ec2:*:*:launch-template/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:security-group/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*",
+        "arn:aws:ec2:*::snapshot/*",
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}",
+          "ec2:CreateAction": [
+            "RunInstances",
+            "CreateVolume",
+            "CreateSnapshots",
+            "CreateSnapshot",
+            "CreateImage"
+          ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Condition": {
+        "ForAllValues:StringNotEquals": {
+          "aws:TagKeys": "Application"
+        },
+        "StringEquals": {
+          "ec2:ResourceTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DeleteTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*",
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "ForAllValues:StringNotEquals": {
+          "aws:TagKeys": "Application"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetCrawler",
+        "glue:GetDataCatalogEncryptionSettings",
+        "glue:BatchGetDevEndpoints",
+        "glue:GetWorkflowRunProperties",
+        "glue:DeleteWorkflow",
+        "glue:UpdateCrawler",
+        "glue:GetDevEndpoint",
+        "glue:UpdateWorkflow",
+        "glue:GetTrigger",
+        "glue:GetUserDefinedFunction",
+        "glue:UpdateTrigger",
+        "glue:GetJobRun",
+        "glue:StartWorkflowRun",
+        "glue:GetUserDefinedFunctions",
+        "glue:StopCrawlerSchedule",
+        "glue:GetClassifier",
+        "glue:GetJobs",
+        "glue:GetTables",
+        "glue:DeleteCrawler",
+        "glue:GetTriggers",
+        "glue:GetWorkflowRun",
+        "glue:BatchStopJobRun",
+        "glue:GetMapping",
+        "glue:GetDevEndpoints",
+        "glue:BatchGetWorkflows",
+        "glue:BatchGetJobs",
+        "glue:StartCrawlerSchedule",
+        "glue:StartJobRun",
+        "glue:UpdateClassifier",
+        "glue:CreateWorkflow",
+        "glue:GetJob",
+        "glue:GetWorkflow",
+        "glue:GetConnections",
+        "glue:GetCrawlers",
+        "glue:GetClassifiers",
+        "glue:CreateTrigger",
+        "glue:StopCrawler",
+        "glue:StopTrigger",
+        "glue:DeleteJob",
+        "glue:StartTrigger",
+        "glue:CreateJob",
+        "glue:GetConnection",
+        "glue:StartCrawler",
+        "glue:UpdateJob",
+        "glue:GetJobBookmark",
+        "glue:StartImportLabelsTaskRun",
+        "glue:DeleteClassifier",
+        "glue:StartExportLabelsTaskRun",
+        "glue:BatchGetPartition",
+        "glue:GetDatabases",
+        "glue:GetTable",
+        "glue:GetDatabase",
+        "glue:UpdateCrawlerSchedule",
+        "glue:BatchGetCrawlers",
+        "glue:GetDataflowGraph",
+        "glue:BatchGetTriggers",
+        "glue:UpdateDevEndpoint",
+        "glue:GetWorkflowRuns",
+        "glue:DeleteTrigger",
+        "glue:GetCrawlerMetrics",
+        "glue:GetJobRuns"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:DeleteConnection",
+        "glue:UpdateDatabase",
+        "glue:UpdateConnection",
+        "glue:CreateTable",
+        "glue:UpdateUserDefinedFunction",
+        "glue:UpdateTable",
+        "glue:CreateUserDefinedFunction",
+        "glue:DeleteTable",
+        "glue:DeleteUserDefinedFunction"
+      ],
+      "Resource": [
+        "arn:aws:glue:*:*:table/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:table/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:connection/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:connection/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:catalog/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:catalog/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:userDefinedFunction/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:userDefinedFunction/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:database/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:database/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:catalog"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sns:ListTagsForResource",
+        "sns:CreatePlatformApplication",
+        "sns:SetSMSAttributes",
+        "sns:CreatePlatformEndpoint",
+        "sns:GetPlatformApplicationAttributes",
+        "sns:ListTopics",
+        "sns:Unsubscribe",
+        "sns:GetSubscriptionAttributes",
+        "sns:ListSubscriptions",
+        "sns:CheckIfPhoneNumberIsOptedOut",
+        "sns:OptInPhoneNumber",
+        "sns:DeleteEndpoint",
+        "sns:ListEndpointsByPlatformApplication",
+        "sns:ListPhoneNumbersOptedOut",
+        "sns:SetEndpointAttributes",
+        "sns:GetEndpointAttributes",
+        "sns:SetSubscriptionAttributes",
+        "sns:DeletePlatformApplication",
+        "sns:SetPlatformApplicationAttributes",
+        "sns:GetSMSAttributes",
+        "sns:ListPlatformApplications"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sns:TagResource",
+        "sns:ListSubscriptionsByTopic",
+        "sns:Publish",
+        "sns:GetTopicAttributes",
+        "sns:DeleteTopic",
+        "sns:CreateTopic",
+        "sns:Subscribe",
+        "sns:ConfirmSubscription",
+        "sns:SetTopicAttributes",
+        "sns:UntagResource",
+        "sns:AddPermission",
+        "sns:RemovePermission"
+      ],
+      "Resource": [
+        "arn:aws:sns:*:*:${aws:PrincipalTag/Ou}*",
+        "arn:aws:sns:*:*:*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:sns:*:*:dynamodb"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:DescribeInsightRules",
+        "cloudwatch:GetDashboard",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:GetInsightRuleReport",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:ListMetrics",
+        "cloudwatch:DescribeAnomalyDetectors",
+        "cloudwatch:DescribeAlarmHistory",
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:ListDashboards",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:GetMetricWidgetImage"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:DeleteAlarms"
+      ],
+      "Resource": [
+        "arn:aws:cloudwatch:*:*:alarm:${aws:PrincipalTag/Ou}*",
+        "arn:aws:cloudwatch:*:*:alarm:*-${aws:PrincipalTag/Ou}-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "states:StartExecution"
+      ],
+      "Resource": [
+        "arn:aws:states:*:*:activity:*",
+        "arn:aws:states:*:*:stateMachine:*",
+        "arn:aws:states:*:*:execution:*:*"
+      ]
+    }
+  ]
+}

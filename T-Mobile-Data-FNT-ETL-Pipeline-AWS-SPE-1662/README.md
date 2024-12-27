@@ -1,4 +1,4 @@
-# Fintech (T-Mobile)ETL Pipeline with AWS Step Functions
+# Fintech ETL Pipeline with AWS Step Functions
 This project houses the artifacts for the ETL pipeline in AWS using S3, Lambda, Glue, and Step Functions to transfer, validate, transform, compress, and partition daily batch data. This structure follows AWS prescriptive guidance for ETL pipeline orchestration found [here](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/orchestrate-an-etl-pipeline-with-validation-transformation-and-partitioning-using-aws-step-functions.html#orchestrate-an-etl-pipeline-with-validation-transformation-and-partitioning-using-aws-step-functions-tools), and is adapted for the current use case.
 
 

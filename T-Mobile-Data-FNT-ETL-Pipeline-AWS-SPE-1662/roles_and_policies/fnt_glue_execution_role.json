@@ -1,0 +1,434 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:s3:::${aws:PrincipalTag/Ou}*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::cf-templates-*",
+        "arn:aws:s3:::*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:s3:::${aws:PrincipalTag/Ou}*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListAllMyBuckets"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::cf-templates-*/*",
+        "arn:aws:s3:::*-${aws:PrincipalTag/Ou}-*/*",
+        "arn:aws:s3:::${aws:PrincipalTag/Ou}*/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::*-${aws:PrincipalTag/Ou}-*/*",
+        "arn:aws:s3:::${aws:PrincipalTag/Ou}*/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:ListRolePolicies",
+        "iam:GetRolePolicy"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:Describe*",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeTags",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeVpcEndpoints",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeSecurityGroups"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*",
+        "arn:aws:ec2:*::snapshot/*",
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}",
+          "ec2:CreateAction": [
+            "RunInstances",
+            "CreateVolume",
+            "CreateSnapshots",
+            "CreateSnapshot",
+            "CreateImage"
+          ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Condition": {
+        "ForAllValues:StringNotEquals": {
+          "aws:TagKeys": "Application"
+        },
+        "StringEquals": {
+          "ec2:ResourceTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DeleteTags"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*",
+        "arn:aws:ec2:*::image/*"
+      ],
+      "Condition": {
+        "ForAllValues:StringNotEquals": {
+          "aws:TagKeys": "Application"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:RunInstances"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetCrawler",
+        "glue:BatchGetDevEndpoints",
+        "glue:GetTableVersions",
+        "glue:GetPartitions",
+        "glue:UpdateCrawler",
+        "glue:GetDevEndpoint",
+        "glue:UpdateTrigger",
+        "glue:GetTrigger",
+        "glue:GetJobRun",
+        "glue:GetJobs",
+        "glue:DeleteCrawler",
+        "glue:GetTriggers",
+        "glue:GetWorkflowRun",
+        "glue:GetMapping",
+        "glue:GetPartition",
+        "glue:UseMLTransforms",
+        "glue:StartCrawlerSchedule",
+        "glue:UpdateMLTransform",
+        "glue:CreateMLTransform",
+        "glue:GetClassifiers",
+        "glue:StartMLEvaluationTaskRun",
+        "glue:CreateTrigger",
+        "glue:DeleteTableVersion",
+        "glue:StopTrigger",
+        "glue:StopCrawler",
+        "glue:DeleteJob",
+        "glue:DeleteDevEndpoint",
+        "glue:GetCatalogImportStatus",
+        "glue:CreateJob",
+        "glue:DeleteMLTransform",
+        "glue:GetTableVersion",
+        "glue:GetConnection",
+        "glue:ResetJobBookmark",
+        "glue:BatchGetPartition",
+        "glue:ListJobs",
+        "glue:StartMLLabelingSetGenerationTaskRun",
+        "glue:GetTable",
+        "glue:GetDatabase",
+        "glue:GetDataflowGraph",
+        "glue:BatchGetCrawlers",
+        "glue:BatchDeleteTableVersion",
+        "glue:ListCrawlers",
+        "glue:GetPlan",
+        "glue:GetJobRuns",
+        "glue:SearchTables",
+        "glue:GetDataCatalogEncryptionSettings",
+        "glue:CreateClassifier",
+        "glue:GetWorkflowRunProperties",
+        "glue:DeleteWorkflow",
+        "glue:GetSecurityConfiguration",
+        "glue:GetResourcePolicy",
+        "glue:UpdateWorkflow",
+        "glue:CreateScript",
+        "glue:GetUserDefinedFunction",
+        "glue:StartWorkflowRun",
+        "glue:StopCrawlerSchedule",
+        "glue:GetUserDefinedFunctions",
+        "glue:GetClassifier",
+        "glue:ListWorkflows",
+        "glue:GetTables",
+        "glue:BatchStopJobRun",
+        "glue:CreateCrawler",
+        "glue:DeleteSecurityConfiguration",
+        "glue:GetDevEndpoints",
+        "glue:BatchGetWorkflows",
+        "glue:ListDevEndpoints",
+        "glue:BatchGetJobs",
+        "glue:StartJobRun",
+        "glue:UpdateClassifier",
+        "glue:CreateWorkflow",
+        "glue:GetJob",
+        "glue:GetWorkflow",
+        "glue:GetConnections",
+        "glue:GetCrawlers",
+        "glue:CreateSecurityConfiguration",
+        "glue:PutWorkflowRunProperties",
+        "glue:StartTrigger",
+        "glue:PutDataCatalogEncryptionSettings",
+        "glue:ListMLTransforms",
+        "glue:StartCrawler",
+        "glue:UpdateJob",
+        "glue:GetJobBookmark",
+        "glue:GetMLTransforms",
+        "glue:StartImportLabelsTaskRun",
+        "glue:DeleteClassifier",
+        "glue:StartExportLabelsTaskRun",
+        "glue:CancelMLTaskRun",
+        "glue:GetMLTaskRuns",
+        "glue:GetSecurityConfigurations",
+        "glue:ListTriggers",
+        "glue:GetDatabases",
+        "glue:UpdateCrawlerSchedule",
+        "glue:BatchGetTriggers",
+        "glue:UpdateDevEndpoint",
+        "glue:CreateDevEndpoint",
+        "glue:GetWorkflowRuns",
+        "glue:DeleteTrigger",
+        "glue:GetCrawlerMetrics"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:BatchCreatePartition",
+        "glue:UpdateDatabase",
+        "glue:UpdateUserDefinedFunction",
+        "glue:DeleteResourcePolicy",
+        "glue:CreateTable",
+        "glue:DeleteDatabase",
+        "glue:UpdateTable",
+        "glue:BatchDeletePartition",
+        "glue:DeleteTable",
+        "glue:CreateUserDefinedFunction",
+        "glue:DeleteUserDefinedFunction",
+        "glue:CreateConnection",
+        "glue:ImportCatalogToGlue",
+        "glue:DeleteConnection",
+        "glue:UpdateConnection",
+        "glue:CreateDatabase",
+        "glue:BatchDeleteConnection",
+        "glue:BatchDeleteTable",
+        "glue:CreatePartition",
+        "glue:PutResourcePolicy",
+        "glue:DeletePartition",
+        "glue:UpdatePartition"
+      ],
+      "Resource": [
+        "arn:aws:glue:*:*:table/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:table/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:connection/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:connection/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:catalog/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:catalog/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:userDefinedFunction/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:userDefinedFunction/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:database/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:database/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:catalog"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:UntagResource",
+        "glue:TagResource"
+      ],
+      "Resource": [
+        "arn:aws:glue:*:*:workflow/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:workflow/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:trigger/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:trigger/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:job/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:job/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:devendpoint/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:glue:*:*:devendpoint/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:crawler/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:glue:*:*:crawler/*-${aws:PrincipalTag/Ou}-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dax:DescribeSubnetGroups"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:DescribeInsightRules",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:GetDashboard",
+        "cloudwatch:GetInsightRuleReport",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:ListMetrics",
+        "cloudwatch:DescribeAnomalyDetectors",
+        "cloudwatch:DescribeAlarmHistory",
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:ListDashboards",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:GetMetricWidgetImage"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:DeleteAlarms"
+      ],
+      "Resource": [
+        "arn:aws:cloudwatch:*:*:alarm:${aws:PrincipalTag/Ou}*",
+        "arn:aws:cloudwatch:*:*:alarm:*-${aws:PrincipalTag/Ou}-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lightsail:CreateBucket"
+      ],
+      "Resource": [
+        "arn:aws:lightsail:*:*:Disk/*",
+        "arn:aws:lightsail:*:*:KeyPair/*",
+        "arn:aws:lightsail:*:*:RelationalDatabase/*",
+        "arn:aws:lightsail:*:*:RelationalDatabaseSnapshot/*",
+        "arn:aws:lightsail:*:*:Instance/*",
+        "arn:aws:lightsail:*:*:LoadBalancer/*",
+        "arn:aws:lightsail:*:*:InstanceSnapshot/*",
+        "arn:aws:lightsail:*:*:StaticIp/*",
+        "arn:aws:lightsail:*:*:Domain/*",
+        "arn:aws:lightsail:*:*:ExportSnapshotRecord/*",
+        "arn:aws:lightsail:*:*:CloudFormationStackRecord/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:CreateLogGroup",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/batch_user1-DGfgUh",
+        "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/admin-KIeJiN"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecs:TagResource"
+      ],
+      "Resource": [
+        "arn:aws:ecs:*:*:container-instance/*",
+        "arn:aws:ecs:*:*:task-definition/*${aws:PrincipalTag/Ou}*:*",
+        "arn:aws:ecs:*:*:cluster/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:ecs:*:*:task-set/*${aws:PrincipalTag/Ou}*/*${aws:PrincipalTag/Ou}*/*",
+        "arn:aws:ecs:*:*:service/*${aws:PrincipalTag/Ou}*",
+        "arn:aws:ecs:*:*:task/*${aws:PrincipalTag/Ou}*"
+      ]
+    }
+  ]
+}

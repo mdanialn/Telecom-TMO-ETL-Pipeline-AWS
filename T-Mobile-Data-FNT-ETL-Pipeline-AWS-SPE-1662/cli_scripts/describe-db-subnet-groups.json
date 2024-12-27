@@ -1,0 +1,32 @@
+{
+    "DBSubnetGroups": [
+        {
+            "DBSubnetGroupName": "dev-fnt-rds-subnet-group",
+            "DBSubnetGroupDescription": "RDS subnet group for Fintech operational DB",
+            "VpcId": "vpc-0d7538012f6dd12e3",
+            "SubnetGroupStatus": "Complete",
+            "Subnets": [
+                {
+                    "SubnetIdentifier": "subnet-000c85bf4a0abaf24",
+                    "SubnetAvailabilityZone": {
+                        "Name": "us-west-2b"
+                    },
+                    "SubnetOutpost": {},
+                    "SubnetStatus": "Active"
+                },
+                {
+                    "SubnetIdentifier": "subnet-0b3f74c7ed3b2a206",
+                    "SubnetAvailabilityZone": {
+                        "Name": "us-west-2a"
+                    },
+                    "SubnetOutpost": {},
+                    "SubnetStatus": "Active"
+                }
+            ],
+            "DBSubnetGroupArn": "arn:aws:rds:us-west-2:905418049473:subgrp:dev-fnt-rds-subnet-group",
+            "SupportedNetworkTypes": [
+                "IPV4"
+            ]
+        }
+    ]
+}

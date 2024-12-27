@@ -1,0 +1,361 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetRandomPassword",
+          "secretsmanager:ListSecrets"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:GetSecretValue"
+        ],
+        "Resource": [
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/admin-KIeJiN",
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/batch_user1-DGfgUh",
+          "arn:aws:secretsmanager:us-west-2:905418049473:secret:rds/dev/fnt/card/account/svc-tmwfLk"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:UntagResource",
+          "secretsmanager:DescribeSecret",
+          "secretsmanager:PutSecretValue",
+          "secretsmanager:DeleteSecret",
+          "secretsmanager:RotateSecret",
+          "secretsmanager:UpdateSecretVersionStage",
+          "secretsmanager:ListSecretVersionIds",
+          "secretsmanager:UpdateSecret"
+        ],
+        "Resource": [
+          "*"
+        ],
+        "Condition": {
+          "StringEqualsIfExists": {
+            "secretsmanager:ResourceTag/Application": "${aws:PrincipalTag/Application}"
+          }
+        }
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:CreateSecret",
+          "secretsmanager:TagResource"
+        ],
+        "Resource": [
+          "*"
+        ],
+        "Condition": {
+          "StringEqualsIfExists": {
+            "aws:RequestTag/Application": "${aws:PrincipalTag/Application}"
+          }
+        }
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "glue:TagResource"
+        ],
+        "Resource": [
+          "arn:aws:glue:*:*:workflow/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:workflow/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:trigger/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:trigger/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:job/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:job/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:devendpoint/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:devendpoint/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:crawler/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:crawler/*-${aws:PrincipalTag/Ou}-*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "glue:CreateJob",
+          "glue:GetConnections",
+          "glue:GetJobs",
+          "glue:GetConnection",
+          "glue:StartJobRun",
+          "glue:GetJobRun",
+          "glue:UpdateJob",
+          "glue:DeleteJob",
+          "glue:GetJobRuns",
+          "glue:GetJob"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "glue:DeleteConnection",
+          "glue:UpdateConnection",
+          "glue:BatchDeleteConnection",
+          "glue:CreateConnection"
+        ],
+        "Resource": [
+          "arn:aws:glue:*:*:table/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:table/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:connection/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:connection/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:catalog/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:catalog/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:userDefinedFunction/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:userDefinedFunction/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:database/*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:glue:*:*:database/*${aws:PrincipalTag/Ou}*",
+          "arn:aws:glue:*:*:catalog"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "support:*"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "states:SendTaskSuccess",
+          "states:ListStateMachines",
+          "states:SendTaskFailure",
+          "states:ListActivities",
+          "states:StopExecution",
+          "states:SendTaskHeartbeat"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "states:DescribeActivity",
+          "states:DescribeStateMachine",
+          "states:ListExecutions",
+          "states:CreateActivity",
+          "states:UpdateStateMachine",
+          "states:DeleteStateMachine",
+          "states:UntagResource",
+          "states:TagResource",
+          "states:DescribeStateMachineForExecution",
+          "states:DescribeExecution",
+          "states:GetExecutionHistory",
+          "states:DeleteActivity",
+          "states:StartExecution",
+          "states:GetActivityTask",
+          "states:CreateStateMachine",
+          "states:ListTagsForResource"
+        ],
+        "Resource": [
+          "arn:aws:states:*:*:activity:*",
+          "arn:aws:states:*:*:stateMachine:*",
+          "arn:aws:states:*:*:execution:*:*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "rds:Describe*",
+          "rds:DeleteDBInstanceAutomatedBackup",
+          "rds:PurchaseReservedDBInstancesOffering"
+        ],
+        "Resource": [
+          "*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "rds:DeleteBlueGreenDeployment",
+          "rds:StartDBCluster",
+          "rds:ResetDBParameterGroup",
+          "rds:RestoreDBInstanceFromS3",
+          "rds:RebootDBShardGroup",
+          "rds:ModifyDBProxyEndpoint",
+          "rds:CreateDBSubnetGroup",
+          "rds:ModifyCustomDBEngineVersion",
+          "rds:ModifyDBParameterGroup",
+          "rds:ModifyDBShardGroup",
+          "rds:AddRoleToDBCluster",
+          "rds:DeleteDBInstance",
+          "rds:ModifyDBRecommendation",
+          "rds:DeleteDBProxy",
+          "rds:CreateDBSnapshot",
+          "rds:DeleteDBSecurityGroup",
+          "rds:ModifyRecommendation",
+          "rds:AuthorizeDBSecurityGroupIngress",
+          "rds:ModifyTenantDatabase",
+          "rds:FailoverDBCluster",
+          "rds:AddRoleToDBInstance",
+          "rds:CreateDBInstance",
+          "rds:ModifyDBProxy",
+          "rds:ModifyActivityStream",
+          "rds:DeleteDBCluster",
+          "rds:AddTagsToResource",
+          "rds:StartDBInstanceAutomatedBackupsReplication",
+          "rds:ModifyEventSubscription",
+          "rds:ModifyDBProxyTargetGroup",
+          "rds:RebootDBCluster",
+          "rds:ModifyDBSnapshot",
+          "rds:DeleteDBClusterSnapshot",
+          "rds:ListTagsForResource",
+          "rds:CreateDBCluster",
+          "rds:DeleteDBClusterParameterGroup",
+          "rds:ModifyDBSubnetGroup",
+          "rds:RemoveRoleFromDBInstance",
+          "rds:FailoverGlobalCluster",
+          "rds:RemoveRoleFromDBCluster",
+          "rds:CreateGlobalCluster",
+          "rds:CreateOptionGroup",
+          "rds:DeregisterDBProxyTargets",
+          "rds:CreateDBProxyEndpoint",
+          "rds:CopyDBParameterGroup",
+          "rds:CreateDBProxy",
+          "rds:ModifyDBClusterParameterGroup",
+          "rds:ModifyDBInstance",
+          "rds:ModifyDBClusterSnapshotAttribute",
+          "rds:RegisterDBProxyTargets",
+          "rds:CopyDBClusterParameterGroup",
+          "rds:CreateDBClusterEndpoint",
+          "rds:CreateDBParameterGroup",
+          "rds:StopDBCluster",
+          "rds:RemoveFromGlobalCluster",
+          "rds:DeleteCustomDBEngineVersion",
+          "rds:PromoteReadReplica",
+          "rds:StartDBInstance",
+          "rds:StopActivityStream",
+          "rds:RestoreDBClusterFromS3",
+          "rds:DeleteDBSubnetGroup",
+          "rds:RestoreDBInstanceFromDBSnapshot",
+          "rds:ModifyDBClusterEndpoint",
+          "rds:ModifyDBCluster",
+          "rds:CreateDBClusterSnapshot",
+          "rds:DeleteDBParameterGroup",
+          "rds:CreateDBClusterParameterGroup",
+          "rds:ModifyDBSnapshotAttribute",
+          "rds:DisableHttpEndpoint",
+          "rds:RemoveTagsFromResource",
+          "rds:PromoteReadReplicaDBCluster",
+          "rds:ModifyOptionGroup",
+          "rds:RestoreDBClusterFromSnapshot",
+          "rds:StartExportTask",
+          "rds:StartActivityStream",
+          "rds:StopDBInstanceAutomatedBackupsReplication",
+          "rds:DeleteDBProxyEndpoint",
+          "rds:RemoveSourceIdentifierFromSubscription",
+          "rds:DeleteDBClusterEndpoint",
+          "rds:RevokeDBSecurityGroupIngress",
+          "rds:ModifyCurrentDBClusterCapacity",
+          "rds:ResetDBClusterParameterGroup",
+          "rds:RestoreDBClusterToPointInTime",
+          "rds:CreateIntegration",
+          "rds:CopyDBSnapshot",
+          "rds:CopyDBClusterSnapshot",
+          "rds:SwitchoverBlueGreenDeployment",
+          "rds:StopDBInstance",
+          "rds:CopyOptionGroup",
+          "rds:DeleteDBClusterAutomatedBackup",
+          "rds:SwitchoverReadReplica",
+          "rds:ModifyCertificates",
+          "rds:CreateDBSecurityGroup",
+          "rds:RebootDBInstance",
+          "rds:ModifyGlobalCluster",
+          "rds:EnableHttpEndpoint",
+          "rds:CreateDBInstanceReadReplica",
+          "rds:SwitchoverGlobalCluster",
+          "rds:RestoreDBInstanceToPointInTime"
+        ],
+        "Resource": [
+          "arn:aws:rds:*:*:og:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:og:default*",
+          "arn:aws:rds:*:*:cluster:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:cluster-snapshot:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:db:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:pg:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:cluster-endpoint:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:snapshot:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:es:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:og:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:cluster:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:cluster-snapshot:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:db:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:pg:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:cluster-endpoint:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:snapshot:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:es:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:secgrp:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:secgrp:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:subgrp:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds:*:*:subgrp:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:cluster-pg:*${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds:*:*:cluster-pg:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:rds::*:global-cluster:${aws:PrincipalTag/Ou}*",
+          "arn:aws:rds::*:global-cluster:*-${aws:PrincipalTag/Ou}-*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "sns:TagResource",
+          "sns:Publish",
+          "sns:ListSubscriptionsByTopic",
+          "sns:GetTopicAttributes",
+          "sns:DeleteTopic",
+          "sns:CreateTopic",
+          "sns:Subscribe",
+          "sns:SetTopicAttributes",
+          "sns:ConfirmSubscription",
+          "sns:UntagResource",
+          "sns:AddPermission",
+          "sns:RemovePermission"
+        ],
+        "Resource": [
+          "arn:aws:sns:*:*:${aws:PrincipalTag/Ou}*",
+          "arn:aws:sns:*:*:*-${aws:PrincipalTag/Ou}-*",
+          "arn:aws:sns:*:*:dynamodb"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "sns:ListTagsForResource",
+          "sns:CreatePlatformApplication",
+          "sns:SetSMSAttributes",
+          "sns:ListTopics",
+          "sns:CreatePlatformEndpoint",
+          "sns:GetPlatformApplicationAttributes",
+          "sns:Unsubscribe",
+          "sns:ListSubscriptions",
+          "sns:GetSubscriptionAttributes",
+          "sns:CheckIfPhoneNumberIsOptedOut",
+          "sns:OptInPhoneNumber",
+          "sns:DeleteEndpoint",
+          "sns:SetEndpointAttributes",
+          "sns:ListEndpointsByPlatformApplication",
+          "sns:ListPhoneNumbersOptedOut",
+          "sns:GetEndpointAttributes",
+          "sns:SetSubscriptionAttributes",
+          "sns:DeletePlatformApplication",
+          "sns:SetPlatformApplicationAttributes",
+          "sns:GetSMSAttributes",
+          "sns:ListPlatformApplications"
+        ],
+        "Resource": [
+          "*"
+        ]
+      }
+    ]
+  }

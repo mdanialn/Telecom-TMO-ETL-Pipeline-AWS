@@ -1,0 +1,10 @@
+Transform: AWS::Serverless-2016-10-31
+
+Description: "This is a template to create ETL pipeline pattern with AWS Step Functions"
+
+Parameters: 
+
+  pKey1:
+    Type: String
+    Description: "Unique S3 bucket to create"
+    AllowedPattern: "[a-zA-Z][a-zA-Z0-9_-]*"

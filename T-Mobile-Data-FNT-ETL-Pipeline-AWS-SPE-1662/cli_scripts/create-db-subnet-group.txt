@@ -1,0 +1,5 @@
+aws rds create-db-subnet-group \
+    --db-subnet-group-name ilab02-fnt-rds-subnet-group \
+    --db-subnet-group-description "ILAB02 RDS subnet group for Fintech operational DB" \
+    --subnet-ids '["subnet-000c85bf4a0abaf24","subnet-0b3f74c7ed3b2a206"]' \
+    --region us-west-2

@@ -1,0 +1,12 @@
+aws rds create-db-instance \
+    --availability-zone us-west-2b \
+    --db-instance-identifier ilab02-fnt-rds-operational-db-reader \
+    --db-instance-class db.serverless \
+    --engine aurora-postgresql \
+    --db-subnet-group-name ilab02-fnt-rds-subnet-group \
+    --db-parameter-group-name fnt-tmo-aurora-postgresql14-parameter-group \
+    --tags "[{\"Key\": \"Role\",\"Value\": \"Fintech Operational Database\"},{\"Key\": \"Owner\",\"Value\": \"scott.cable@t-mobile.com\"},{\"Key\": \"Environment\",\"Value\": \"Non-production::ILAB02\"},{\"Key\": \"App OU\",\"Value\": \"fnt\"},{\"Key\": \"Application\",\"Value\": \"fnt\"},{\"Key\": \"Name\",\"Value\": \"ilab02-fnt-rds-operational-db-reader\"},{\"Key\": \"Stack\",\"Value\": \"Fintech Backend\"},{\"Key\": \"Workload\",\"Value\": \"Fintech Card\"}]" \
+    --db-cluster-identifier ilab02-fnt-rds-operational-db-cluster \
+    --copy-tags-to-snapshot \
+    --ca-certificate-identifier rds-ca-rsa2048-g1 \
+    --region us-west-2

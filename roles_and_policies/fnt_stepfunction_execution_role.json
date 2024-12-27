@@ -1,0 +1,185 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:InvokeFunction"
+      ],
+      "Resource": [
+        "arn:aws:lambda:*:*:function:${aws:PrincipalTag/Ou}*",
+        "arn:aws:lambda:*:*:function:*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:lambda:*:*:layer:*:*",
+        "arn:aws:lambda:*:*:layer:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:*"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:subnet/*",
+        "arn:aws:ec2:*:*:key-pair/*",
+        "arn:aws:ec2:*::snapshot/*",
+        "arn:aws:ec2:*:*:security-group/*",
+        "arn:aws:ec2:*:*:network-interface/*",
+        "arn:aws:ec2:*::image/*",
+        "arn:aws:ec2:*:*:launch-template/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetConnections",
+        "glue:GetCrawler",
+        "glue:GetJobs",
+        "glue:DeleteJob",
+        "glue:ListJobs",
+        "glue:CreateJob",
+        "glue:GetConnection",
+        "glue:StartJobRun",
+        "glue:GetJobRun",
+        "glue:UpdateJob",
+        "glue:GetJobBookmark",
+        "glue:GetJobRuns",
+        "glue:GetJob"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:DescribeInsightRules",
+        "cloudwatch:GetDashboard",
+        "cloudwatch:PutMetricData",
+        "cloudwatch:GetInsightRuleReport",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:ListMetrics",
+        "cloudwatch:DescribeAnomalyDetectors",
+        "cloudwatch:DescribeAlarmHistory",
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:ListDashboards",
+        "cloudwatch:ListTagsForResource",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:GetMetricWidgetImage"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:DeleteAlarms"
+      ],
+      "Resource": [
+        "arn:aws:cloudwatch:*:*:alarm:${aws:PrincipalTag/Ou}*",
+        "arn:aws:cloudwatch:*:*:alarm:*-${aws:PrincipalTag/Ou}-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:ListTagsLogGroup",
+        "logs:TagLogGroup",
+        "logs:UntagLogGroup",
+        "logs:DeleteLogGroup",
+        "logs:FilterLogEvents",
+        "logs:GetLogGroupFields"
+      ],
+      "Resource": [
+        "arn:aws:logs:*:*:log-group:*${aws:PrincipalTag/Ou}*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/${aws:PrincipalTag/Ou}*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/*-${aws:PrincipalTag/Ou}-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:DeleteLogStream"
+      ],
+      "Resource": [
+        "arn:aws:logs:*:*:log-group:*${aws:PrincipalTag/Ou}*:*${aws:PrincipalTag/Ou}*:*${aws:PrincipalTag/Ou}*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/${aws:PrincipalTag/Ou}*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:logs:*:*:log-group:*${aws:PrincipalTag/Ou}*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogDelivery",
+        "logs:GetLogRecord",
+        "logs:CreateLogStream",
+        "logs:DescribeLogGroups",
+        "logs:UpdateLogDelivery",
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents",
+        "logs:DeleteLogDelivery",
+        "logs:CreateLogGroup",
+        "logs:GetLogDelivery",
+        "logs:PutLogEvents",
+        "logs:ListLogDeliveries"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "states:SendTaskSuccess",
+        "states:ListStateMachines",
+        "states:SendTaskFailure",
+        "states:ListActivities",
+        "states:StopExecution",
+        "states:SendTaskHeartbeat"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "states:DescribeActivity",
+        "states:DescribeStateMachine",
+        "states:ListExecutions",
+        "states:CreateActivity",
+        "states:UpdateStateMachine",
+        "states:DeleteStateMachine",
+        "states:UntagResource",
+        "states:TagResource",
+        "states:DescribeStateMachineForExecution",
+        "states:DescribeExecution",
+        "states:GetExecutionHistory",
+        "states:DeleteActivity",
+        "states:StartExecution",
+        "states:GetActivityTask",
+        "states:CreateStateMachine",
+        "states:ListTagsForResource"
+      ],
+      "Resource": [
+        "arn:aws:states:*:*:activity:*",
+        "arn:aws:states:*:*:stateMachine:*",
+        "arn:aws:states:*:*:execution:*:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sns:Publish"
+      ],
+      "Resource": [
+        "arn:aws:sns:*:*:${aws:PrincipalTag/Ou}*",
+        "arn:aws:sns:*:*:*-${aws:PrincipalTag/Ou}-*",
+        "arn:aws:sns:*:*:dynamodb"
+      ]
+    }
+  ]
+}

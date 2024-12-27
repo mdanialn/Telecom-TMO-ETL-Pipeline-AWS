@@ -1,0 +1,20 @@
+aws rds create-db-cluster \
+    --availability-zones us-west-2a us-west-2b \
+    --database-name ilab02_fnt_aurora_postgres_1 \
+    --db-cluster-identifier ilab02-fnt-rds-operational-db-cluster \
+    --db-cluster-parameter-group-name fnt-tmo-aurora-postgresql14 \
+    --vpc-security-group-ids sg-0201c4abf6561a546 \
+    --db-subnet-group-name ilab02-fnt-rds-subnet-group \
+    --engine aurora-postgresql \
+    --engine-version 14.9 \
+    --port 5432 \
+    --master-username postgres \
+    --master-user-password <password> \
+    --tags "[{\"Key\": \"Role\",\"Value\": \"Fintech Operational Database\"},{\"Key\": \"Owner\",\"Value\": \"scott.cable@t-mobile.com\"},{\"Key\": \"Environment\",\"Value\": \"Non-production::ILAB02\"},{\"Key\": \"App OU\",\"Value\": \"fnt\"},{\"Key\": \"Application\",\"Value\": \"fnt\"},{\"Key\": \"Name\",\"Value\": \"ilab02-fnt-rds-operational-db-cluster\"},{\"Key\": \"Stack\",\"Value\": \"Fintech Backend\"},{\"Key\": \"Workload\",\"Value\": \"Fintech Card\"}]" \
+    --enable-cloudwatch-logs-exports postgresql \
+    --engine-mode provisioned \
+    --serverless-v2-scaling-configuration MinCapacity=0.5,MaxCapacity=16.0 \
+    --copy-tags-to-snapshot \
+    --network-type IPV4 \
+    --storage-encrypted \
+    --region us-west-2
